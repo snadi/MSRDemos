@@ -1,11 +1,12 @@
-FROM python:rc-alpine3.10
+FROM python:3.7-slim
 
-# Install ca-certificates so that HTTPS works consistently
-RUN apk update && \
-	apk add --no-cache git
+RUN apt-get update && \
+	apt-get install git -y
 
 WORKDIR /msrdemo
 
-COPY . .
+COPY requirements.txt /msrdemo/requirements.txt
 
 RUN pip install --trusted-host pypi.python.org -r requirements.txt
+
+COPY . /msrdemo
