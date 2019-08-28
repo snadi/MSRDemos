@@ -52,7 +52,7 @@ def getReleaseDates(username, password):
 	data = {}
 
 	repositories = []
-	LibraryData = read_json_file('LibraryData.json')
+	LibraryData = read_json_file('../resources/LibraryData.json')
 	for line in LibraryData:
 		repositories.append(line['FullRepoName'])
 

@@ -16,6 +16,7 @@
 from pydriller import GitRepository
 from pydriller import RepositoryMining
 import sys
+from datetime import date, timedelta
 
 def main():
     # mine for non-functional fixes in commit messages -- stem words to catch more commits
@@ -36,7 +37,8 @@ def main():
         with open(sys.argv[repo].replace('../', '').replace('/','')+".csv","w") as new_file:
             new_file.write('{:^40},{:^40}\n'.format('Commit ID:','Commit Message:')) 
             
-            for commit in RepositoryMining(sys.argv[repo],only_modifications_with_file_types=['.java','.py'], since= datetime.today() - timedelta(days=15) ).traverse_commits():
+            #doing a 15 day range to make it quick for the demo
+            for commit in RepositoryMining(sys.argv[repo],only_modifications_with_file_types=['.java','.py'], since= (date.today() - timedelta(days=15) )).traverse_commits():
                 # bool written avoids duplication if more than one word matches
                 written = False 
                 msg = commit.msg.lower()
