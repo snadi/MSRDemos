@@ -52,7 +52,8 @@ class CodeSearch:
 			file_path = code_result.path
 			result_repos.add(repository.full_name)
 
-			commits = repository.get_commits(path=file_path)
+			#fixing until date here for reproducibility
+			commits = repository.get_commits(path=file_path, until=datetime.date(2019, 8, 29))
 			for commit in commits:
 				if commit.committer is not None:
 					users.add((commit.commit.committer.name,commit.commit.committer.email))

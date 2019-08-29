@@ -1,0 +1,20 @@
+[
+ {
+   "LibraryName": "testng",
+   "Domain": "Testing",
+   "FullRepoName": "cbeust/testng",
+   "SOtags": "testng",
+   "Package": "org.testng", 
+   "GitHubURL": "git://github.com/cbeust/testng.git",
+   "JIRAURL": ""
+ },
+ {
+   "LibraryName": "slf4j",
+   "Domain": "Logging",
+   "FullRepoName": "qos-ch/slf4j",
+   "SOtags": "slf4j",
+   "Package": "org.slf4j",
+   "GitHubURL": "git://github.com/qos-ch/slf4j.git",
+   "JIRAURL": "https://jira.qos.ch/sr/jira.issueviews:searchrequest-xml/temp/SearchRequest.xml?jqlQuery=project+%3D+SLF4J+AND+issuetype+%3D+Bug+ORDER+BY+priority+DESC%2C+updated+DESC&tempMax=1000&field=summary&field=reporter&field=created&field=resolved&field=comments"
+ }
+]

@@ -24,26 +24,19 @@ All instructions below are based on running from within the Docker image.
 
 ## Creating your own scripts for mining git
 
-* Use case here: mining the Linux kernel's history to find how variability anomalies get introduced and fixed
+git provides many commands for exploring the history. You can simply write custom scripts that execute these commands and parse the output.
 
-* clone the Linux kernel repo
-
-* The scripts used in this demo are available at [https://github.com/snadi/LinuxVarAnomalyEvolution](https://github.com/snadi/LinuxVarAnomalyEvolution)
-
-* In the cloned linux kernel repo, run the following commands to understand the different things you can do with `git log`:
+* For example, go to the `elasticsearch` repo in `repos/` and explore the history using the following `git log` commands:
 
 ```
 git log -10 -p --format=fuller --no-merges
-git log -50 -p --format=fuller --no-merges -- '*Kconfig*'
-git log -50 -p --format=fuller --no-merges -- '*.c'
+git log -10 -p --format=fuller --no-merges -- '*.gradle'
+git log -10 -p --format=fuller --no-merges -- '*.java'
 ```
 
-* Look at the `git-log-cpp.py` scripts in the repo above to see what things you can do with git log
+The first one lists the last 10 commits that are not merge commits. The second one lists the last 10 commits that have modified gradle files, while the last one lists the last 10 commits that have modified java files. You can see a structure for how each commit is displayed and you can process that text yourself.
 
-* In the cloned linux kernel repo, run the `git-log-cpp.py`. For demo purposes, you might want to limit the number of processed comments on line 22 of that python script by added a `-200` after `git log`
-
-* Pick any commit from the output and check it out online to see if the extracted changes are correct. Here's one I picked:
-* [https://github.com/torvalds/linux/commit/1b568f0aabf280555125bc7cefc08321ff0ebaba](https://github.com/torvalds/linux/commit/1b568f0aabf280555125bc7cefc08321ff0ebaba)
+You probably never have to go that route unless you have something very specific to do that current git processing libraries can't support.
 
 
 ## Using GitPython
@@ -202,8 +195,25 @@ Take any commit SHA and check it out on GitHub to verify that it is a merge conf
 
 ## Using Python Github APIs
 
-* Example of a simple script thaat retrieves emails of developers who committed to java files using the `javax.crypto.*` APIs: [https://github.com/snadi/cmput663-F17/blob/master/Slides/VersionHistories/pythonGitHubAPIs/get_committers_emails.py](https://github.com/snadi/cmput663-F17/blob/master/Slides/VersionHistories/pythonGitHubAPIs/get_committers_emails.py) -- **PLEASE DO NOT EMAIL DEVELOPERS TO FILL SURVEYS ETC. AS PART OF THIS COURSE. SUCH CONTACT REQUIRES ETHICS APPROVAL**
-* You can run the script as `python get_committers_emails.py  --repoFile=repositories.txt --outputFile contactemails.csv` -- Note that you need a valid github authentication token or will have to hard-code your username and password (or enter your password everytime)
+* Example of a simple script thaat retrieves emails of developers who committed to java files using the `javax.crypto.*` APIs: [https://github.com/snadi/MSRDemos/blob/master/scripts/get_crypto_committer_emails.py](https://github.com/snadi/MSRDemos/blob/master/scripts/get_crypto_committer_emails.py) -- **PLEASE DO NOT EMAIL DEVELOPERS TO FILL SURVEYS ETC. AS PART OF THIS COURSE. SUCH CONTACT REQUIRES ETHICS APPROVAL. Also, please check the notes at the beginning of the script for further consideration**
+* To run:
+
+```
+/msrdemo# cd scripts/
+/msrdemo/scripts# python get_crypto_committer_emails.py --repoFile=../resources
+/repositories.txt --outputFile=contactemails.csv --username=<your github username>
+```
+
+Output:
+
+```
+num of repos 57
+repos from results 3
+found  13
+/msrdemo# cat contactemails.csv 
+```
+
+Note that the script now uses a username and password for authentication. It is better to use a github autherization token, but such tokens cannot be pushed to any public GitHub repo. 
 
 ## Using GHTorrent
 

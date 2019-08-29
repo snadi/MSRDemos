@@ -2,7 +2,6 @@
     # A. Hindle, N. Ernst, M. W. Godfrey, R. C. Holt, and J. Mylopoulos. 
         # Whats in a name? on the automated topic naming of software maintenance
         # activities. 
-        # submission: http://softwareprocess. es/whats-in-a-name, 125:150–155, 2010.
     # https://github.com/ishepard/pydriller
 
 
@@ -16,7 +15,8 @@
 from pydriller import GitRepository
 from pydriller import RepositoryMining
 import sys
-from datetime import date, timedelta
+import datetime
+import pytz
 
 def main():
     # mine for non-functional fixes in commit messages -- stem words to catch more commits
@@ -38,7 +38,7 @@ def main():
             new_file.write('{:^40},{:^40}\n'.format('Commit ID:','Commit Message:')) 
             
             #doing a 15 day range to make it quick for the demo
-            for commit in RepositoryMining(sys.argv[repo],only_modifications_with_file_types=['.java','.py'], since= (date.today() - timedelta(days=15) )).traverse_commits():
+            for commit in RepositoryMining(sys.argv[repo],only_modifications_with_file_types=['.java','.py'], since=datetime.datetime(2019, 8, 14, tzinfo=pytz.UTC), to=datetime.datetime(2019, 8, 29, tzinfo=pytz.UTC)).traverse_commits():
                 # bool written avoids duplication if more than one word matches
                 written = False 
                 msg = commit.msg.lower()
