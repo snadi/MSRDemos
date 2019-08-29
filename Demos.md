@@ -1,17 +1,17 @@
-## About
+# About
 
-This repo contains a bunch of demos related to mining various kinds of information from different data sources (e.g., git repos, GitHub repos, Stack Overflow), as well as analyzing different software information (e.g., code structure, code changes, textual information etc.).
+This repo contains a bunch of demos related to mining various kinds of information from different data sources (e.g., git repos, GitHub repos, Stack Overflow). These are simple use cases just to demonstrate available options and how to get started.
 
-The demos are prepared by [Sarah Nadi](tt
+The demos are prepared by [Sarah Nadi](https://sarahnadi.org) and are mainly used in CMPUT 663 at the University of Alberta.
 
-## Running Demos
+# Running the Demos
 
 The repo comes with a Dockerfile that takes care of using the correct version of python and setting up dependencies. 
 
 To build the Docker image (this will take a bit of time):
 
 ```
-docker build --tag=msrdemo .
+docker build --tag=msrdemo:f19 .
 ```
 
 To run the docker image:
@@ -21,6 +21,8 @@ docker run --name MSRDemo -it --rm msrdemo:f19 /bin/sh
 ```
 
 All instructions below are based on running from within the Docker image.
+
+# Mining git Repositories
 
 ## Creating your own scripts for mining git
 
@@ -193,6 +195,8 @@ Take any commit SHA and check it out on GitHub to verify that it is a merge conf
 /msrdemo/scripts# python find_NFR_commits.py ../data/elasticsearch/
 ```
 
+# Mining GitHub
+
 ## Using Python Github APIs
 
 * Example of a simple script thaat retrieves emails of developers who committed to java files using the `javax.crypto.*` APIs: [https://github.com/snadi/MSRDemos/blob/master/scripts/get_crypto_committer_emails.py](https://github.com/snadi/MSRDemos/blob/master/scripts/get_crypto_committer_emails.py) -- **PLEASE DO NOT EMAIL DEVELOPERS TO FILL SURVEYS ETC. AS PART OF THIS COURSE. SUCH CONTACT REQUIRES ETHICS APPROVAL. Also, please check the notes at the beginning of the script for further consideration**
@@ -215,8 +219,21 @@ found  13
 
 Note that the script now uses a username and password for authentication. It is better to use a github autherization token, but such tokens cannot be pushed to any public GitHub repo. 
 
+Another example is looking at the average release times of various GitHub repos, as shown in [https://github.com/snadi/MSRDemos/blob/master/scripts/get_release_frequency.py](https://github.com/snadi/MSRDemos/blob/master/scripts/get_release_frequency.py).
+
+```
+/msrdemo# cd scripts/
+/msrdemo# python get_release_frequency.py 
+``` 
+
 ## Using GHTorrent
 
 * The website provides all the details on how to download a data dump to use [http://ghtorrent.org/downloads.html](http://ghtorrent.org/downloads.html)
 * Alternatively, they now also offer a VM through vagrant that removes the burden of doing a lot of the setup needed
 * You can follow the instructions [here](https://github.com/ghtorrent/ghtorrent-vagrant) to use this
+
+# Mining Stack Overflow Data
+
+## Using StackExchange APIs in Python
+
+* The script 
