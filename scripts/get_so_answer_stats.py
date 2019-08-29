@@ -5,7 +5,7 @@ from statistics import median
 
 def read_question_ids():
     question_ids = list()
-    with open("resources/question_ids.txt", "r") as file: 
+    with open("../resources/question_ids.txt", "r") as file: 
         for line in file.readlines():
             items = line.split(",")
             question_ids.extend([item.strip() for item in items])

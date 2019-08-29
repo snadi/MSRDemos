@@ -236,4 +236,13 @@ Another example is looking at the average release times of various GitHub repos,
 
 ## Using StackExchange APIs in Python
 
-* The script 
+* The script [https://github.com/snadi/MSRDemos/blob/master/scripts/get_so_answer_stats.py](https://github.com/snadi/MSRDemos/blob/master/scripts/get_so_answer_stats.py) shows how you can use the StackExchange API to get the number of answer for a list of questions.
+
+* To run:
+
+
+```
+/msrdemo# cd scripts/
+/msrdemo# python get_so_answer_stats.py  
+``` 
+
