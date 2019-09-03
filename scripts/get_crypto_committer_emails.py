@@ -16,6 +16,8 @@ from github import Github, Repository
 import getpass
 import csv
 import argparse
+import datetime
+import pytz
 
 class CodeSearch:
 
@@ -53,7 +55,7 @@ class CodeSearch:
 			result_repos.add(repository.full_name)
 
 			#fixing until date here for reproducibility
-			commits = repository.get_commits(path=file_path, until=datetime.date(2019, 8, 29))
+			commits = repository.get_commits(path=file_path, until=datetime.datetime(2019, 8, 29, tzinfo=pytz.UTC))
 			for commit in commits:
 				if commit.committer is not None:
 					users.add((commit.commit.committer.name,commit.commit.committer.email))
