@@ -49,7 +49,7 @@ You probably never have to go that route unless you have something very specific
 
 ```
 /msrdemo# cd repos/elasticsearch/
-/msrdemo/repos/elasticsearch# python ../../scripts/FindMergeConflicts.py 
+/msrdemo/repos/elasticsearch# python3 ../../scripts/FindMergeConflicts.py 
 ```
 
 You should see this output:
