@@ -246,3 +246,5 @@ Another example is looking at the average release times of various GitHub repos,
 /msrdemo# python get_so_answer_stats.py  
 ``` 
 
+As another example for using Stack Exchange APIs, check out the code we used in our SANER '20 paper on navigating Stack Overflow answers [https://github.com/ualberta-smr/StackOverflowNavCues](https://github.com/ualberta-smr/StackOverflowNavCues). 
+
