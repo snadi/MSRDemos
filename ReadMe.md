@@ -11,13 +11,13 @@ The repo comes with a Dockerfile that takes care of using the correct version of
 To build the Docker image (this will take a bit of time):
 
 ```
-docker build --tag=msrdemo:f19 .
+docker build --tag=msrdemo:f21 .
 ```
 
 To run the docker image:
 
 ```
-docker run --name MSRDemo -it --rm msrdemo:f19 /bin/sh
+docker run --name MSRDemo -it --rm msrdemo:f21 /bin/sh
 ```
 
 All instructions below are based on running from within the Docker image.
@@ -194,6 +194,8 @@ Take any commit SHA and check it out on GitHub to verify that it is a merge conf
 /msrdemo# cd scripts/
 /msrdemo/scripts# python find_NFR_commits.py ../data/elasticsearch/
 ```
+
+The result will be in `scripts/dataelasticsearch.csv`. Note that there is a problem with escaping quotes so the formatting is off, but you see the commit IDs and corresponding commit messages.
 
 # Mining GitHub
 
