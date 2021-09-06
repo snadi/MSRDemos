@@ -207,8 +207,7 @@ The result will be in `scripts/reposelasticsearch.csv`. Note that there is a pro
 ```
 /msrdemo# cd scripts/
 /msrdemo/scripts# python get_crypto_committer_emails.py --repoFile=../resources
-/repositories.txt --outputFile=contactemails.csv --username=<your github username>
-```
+/repositories.txt --outputFile=contactemails.csv --token=<tokenfile>```
 
 Output:
 
@@ -219,14 +218,9 @@ found  13
 /msrdemo# cat contactemails.csv 
 ```
 
-Note that the script now uses a username and password for authentication. It is better to use a github autherization token, but such tokens cannot be pushed to any public GitHub repo. 
+You need to [create your own token](https://docs.github.com/en/github/authenticating-to-github/keeping-your-account-and-data-secure/creating-a-personal-access-token) and save it in a token file that you ass to the script. 
 
-Another example is looking at the average release times of various GitHub repos, as shown in [https://github.com/snadi/MSRDemos/blob/master/scripts/get_release_frequency.py](https://github.com/snadi/MSRDemos/blob/master/scripts/get_release_frequency.py).
-
-```
-/msrdemo# cd scripts/
-/msrdemo# python get_release_frequency.py 
-``` 
+Another example is looking at the average release times of various GitHub repos, as shown in [https://github.com/ualberta-smr/LibraryMetricScripts/blob/master/scripts/ReleaseFrequency/releasefrequency.py](https://github.com/ualberta-smr/LibraryMetricScripts/blob/master/scripts/ReleaseFrequency/releasefrequency.py).
 
 ## Using GHTorrent
 
