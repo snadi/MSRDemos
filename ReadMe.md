@@ -8,6 +8,12 @@ The demos are prepared by [Sarah Nadi](https://sarahnadi.org) and are mainly use
 
 The repo comes with a Dockerfile that takes care of using the correct version of python and setting up dependencies. 
 
+First, clone this repo recursively to also clone the submodule:
+
+```
+git clone git@github.com:snadi/MSRDemos.git --recurse-submodules
+```
+
 To build the Docker image (this will take a bit of time):
 
 ```
