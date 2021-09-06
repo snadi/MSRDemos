@@ -21,8 +21,9 @@ import pytz
 
 class CodeSearch:
 
-	def __init__(self, repo_file, output_file, username):
-		self.github = Github(username, getpass.getpass("Enter your password:"))
+	def __init__(self, repo_file, output_file, tokenfile):
+		token = open(tokenfile, "r").read()
+		self.github = Github(token)
 		self.base_query = '"javax.crypto" language:java'
 		self.repositories = []
 		self.writer = None
@@ -84,6 +85,7 @@ class CodeSearch:
 		for repo in self.repositories:
 			query += " repo:" + repo
 
+		print(query)
 		return self.github.search_code(query)
 
 	def get_repositories(self):
@@ -98,8 +100,8 @@ class CodeSearch:
 		'''
 		return self.github
 
-def run(repoFile, outputFile, username):
-	code_search = CodeSearch(repoFile, outputFile, username)
+def run(repoFile, outputFile, tokenfile):
+	code_search = CodeSearch(repoFile, outputFile, tokenfile)
 	code_search.read_repositories()
 
 	num_of_repos =  len(code_search.get_repositories())
@@ -111,9 +113,9 @@ def run(repoFile, outputFile, username):
 parser = argparse.ArgumentParser(description='Process repositories in repoFile and output matching code files in codeFile')
 parser.add_argument('--repoFile', help='name of file containing repository list', required=True)
 parser.add_argument('--outputFile', help='name of output file', required=True)
-parser.add_argument('--username', help='github username', required=True)
+parser.add_argument('--tokenFile', help="file with github token", required=True)
 
 args = parser.parse_args()
 print ('repofile', args.repoFile)
 print ('outputfile', args.outputFile)
-run(args.repoFile, args.outputFile, args.username)
+run(args.repoFile, args.outputFile, args.tokenFile)
