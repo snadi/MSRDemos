@@ -46,7 +46,7 @@ def main():
                     if term.lower() in msg.lower() and filter(msg) and not written:
                         written = True
                         # print the commit ID and committer message
-                        new_file.write('{:^40},{:^40}\n'.format(commit.hash,msg))
+                        new_file.write('{:^40},"{:^40}"\n'.format(commit.hash,msg))
 
                         
 def filter(message):
