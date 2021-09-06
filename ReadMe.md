@@ -207,7 +207,8 @@ The result will be in `scripts/reposelasticsearch.csv`. Note that there is a pro
 ```
 /msrdemo# cd scripts/
 /msrdemo/scripts# python get_crypto_committer_emails.py --repoFile=../resources
-/repositories.txt --outputFile=contactemails.csv --token=<tokenfile>```
+/repositories.txt --outputFile=contactemails.csv --token=<tokenfile>
+```
 
 Output:
 
