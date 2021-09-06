@@ -192,10 +192,10 @@ Take any commit SHA and check it out on GitHub to verify that it is a merge conf
 
 ```
 /msrdemo# cd scripts/
-/msrdemo/scripts# python find_NFR_commits.py ../data/elasticsearch/
+/msrdemo/scripts# python find_NFR_commits.py ../repos/elasticsearch/
 ```
 
-The result will be in `scripts/dataelasticsearch.csv`. Note that there is a problem with escaping quotes so the formatting is off, but you see the commit IDs and corresponding commit messages.
+The result will be in `scripts/reposelasticsearch.csv`. Note that there is a problem with escaping quotes so the formatting is off, but you see the commit IDs and corresponding commit messages.
 
 # Mining GitHub
 
