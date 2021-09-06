@@ -19,7 +19,7 @@ def main():
 	
 	#get all threads for the ids we are interested in
 	#filter created from here: https://api.stackexchange.com/docs/questions
-	questions = SITE.fetch('/questions', ids=question_ids, filter='!-*jbN-o8P3E5')
+	questions = SITE.fetch('questions', ids=question_ids, filter='!-*jbN-o8P3E5')
 	
 	items = questions.get('items')
 
