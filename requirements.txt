@@ -1,4 +1,4 @@
-gitpython==3.0.8
+gitpython==3.1.30
 pydriller==1.9.2
 PyGithub==1.43.8
 stackapi==0.1.12
