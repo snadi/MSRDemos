@@ -85,15 +85,14 @@ core/src/main/java/org/elasticsearch/index/query/HasChildQueryParser.java appear
 ## Using PyDriller to Mine git Repos
 
 * Use case: finding the most frequently modified funciton in the repo's commits
-* Check [https://github.com/snadi/MSRDemos/blob/master/scripts/find_NFR_commits.py](https://github.com/snadi/MSRDemos/blob/master/scripts/find_NFR_commits.py)
+* Check [https://github.com/snadi/MSRDemos/blob/master/scripts/get_most_freq_chgd_method.py]https://github.com/snadi/MSRDemos/blob/master/scripts/get_most_freq_chgd_method.py)
 * To run:
 
 ```
-/msrdemo# cd scripts/
-/msrdemo/scripts# python find_NFR_commits.py ../repos/elasticsearch/
+/msrdemo# python scripts/get_most_freq_chgd_method.py --path=repos/pydriller/
 ```
 
-The result will be in `scripts/reposelasticsearch.csv`. Note that there is a problem with escaping quotes so the formatting is off, but you see the commit IDs and corresponding commit messages.
+It will display tuples containing the methods (including the file path) and their frequency in commits (shows 10 most modified functions)
 
 # Mining GitHub
 
