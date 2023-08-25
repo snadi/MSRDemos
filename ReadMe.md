@@ -225,7 +225,7 @@ found  13
 /msrdemo# cat contactemails.csv 
 ```
 
-You need to [create your own token](https://docs.github.com/en/github/authenticating-to-github/keeping-your-account-and-data-secure/creating-a-personal-access-token) and save it in a token file that you ass to the script. 
+You need to [create your own token](https://docs.github.com/en/github/authenticating-to-github/keeping-your-account-and-data-secure/creating-a-personal-access-token) and save it in a token file that you pass to the script. 
 
 Another example is looking at the average release times of various GitHub repos, as shown in [https://github.com/ualberta-smr/LibraryMetricScripts/blob/master/scripts/ReleaseFrequency/releasefrequency.py](https://github.com/ualberta-smr/LibraryMetricScripts/blob/master/scripts/ReleaseFrequency/releasefrequency.py).
 

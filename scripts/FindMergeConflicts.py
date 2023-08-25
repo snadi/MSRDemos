@@ -19,6 +19,7 @@ class CommitAnalyzer():
 		for commit in self.repo.iter_commits('master'):
 			parents = commit.parents
 			if len(parents) > 1 and "conflict" in commit.message.lower() and ".java" in commit.message.lower():
+				#uncomment if you want to get only recent merge conflicts (e.g., in the last 5 days)
 				#if datetime.fromtimestamp(commit.committed_date) >= current_date - timedelta(5):
 				conflict_commits.append(commit)
 
