@@ -1,3 +1,6 @@
 [submodule "repos/elasticsearch"]
 	path = repos/elasticsearch
 	url = git@github.com:elastic/elasticsearch.git
+[submodule "repos/pydriller"]
+	path = repos/pydriller
+	url = git@github.com:ishepard/pydriller.git

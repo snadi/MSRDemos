@@ -1,4 +1,4 @@
-FROM python:3.7-alpine3.10
+FROM python:3.10-alpine
 
 # Install ca-certificates so that HTTPS works consistently
 RUN apk update && \
