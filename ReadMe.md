@@ -28,6 +28,8 @@ docker run --name MSRDemo -it --rm msrdemo:f21 /bin/sh
 
 All instructions below are based on running from within the Docker image.
 
+Alternatively, you can set up a Python virtual environment and install the dependencies there.
+
 # Mining git Repositories
 
 ## Creating your own scripts for mining git
@@ -85,7 +87,7 @@ core/src/main/java/org/elasticsearch/index/query/HasChildQueryParser.java appear
 ## Using PyDriller to Mine git Repos
 
 * Use case: finding the most frequently modified funciton in the repo's commits
-* Check [https://github.com/snadi/MSRDemos/blob/master/scripts/get_most_freq_chgd_method.py]https://github.com/snadi/MSRDemos/blob/master/scripts/get_most_freq_chgd_method.py)
+* Check [https://github.com/snadi/MSRDemos/blob/master/scripts/get\_most\_freq\_chgd\_method.py](https://github.com/snadi/MSRDemos/blob/master/scripts/get_most_freq_chgd_method.py)
 * To run:
 
 ```
@@ -98,33 +100,18 @@ It will display tuples containing the methods (including the file path) and thei
 
 ## Using Python Github APIs
 
-* Example of a simple script thaat retrieves emails of developers who committed to java files using the `javax.crypto.*` APIs: [https://github.com/snadi/MSRDemos/blob/master/scripts/get_crypto_committer_emails.py](https://github.com/snadi/MSRDemos/blob/master/scripts/get_crypto_committer_emails.py) -- **PLEASE DO NOT EMAIL DEVELOPERS TO FILL SURVEYS ETC. AS PART OF THIS COURSE. SUCH CONTACT REQUIRES ETHICS APPROVAL. Also, please check the notes at the beginning of the script for further consideration**
-* To run:
+* Use case: Assume you want to know the files typically involved in bug fixes. In this case, you can use Issues on the GitHub repository as your starting point for bugs and then find the files that were changed to address the bug
+* Check [https://github.com/snadi/MSRDemos/blob/master/scripts/get_most_errorprone_files.py](https://github.com/snadi/MSRDemos/blob/master/scripts/get_most_errorprone_files.py) for details.
+* Run the script as:
 
 ```
-/msrdemo# cd scripts/
-/msrdemo/scripts# python get_crypto_committer_emails.py --repoFile=../resources
-/repositories.txt --outputFile=contactemails.csv --token=<tokenfile>
+python scripts/get_most_errorprone_files.py --token=token.txt --repo=ishepard/pydriller
 ```
+* Note that I'm using the pydriller repo here as the target repo to analyze. You can analyze whatever repo you want
+* You need to [create your own token](https://docs.github.com/en/github/authenticating-to-github/keeping-your-account-and-data-secure/creating-a-personal-access-token) and save it in a token file that you pass to the script. This is used to authenticate with the GitHub API
+* Food for thought: What are the drawbacks of the way we find files related to bug fixes in that script? Does it let us miss files? Does it let us add incorrect files? It is important to understand the implications of any assumptions/proxies we make.
 
-Output:
-
-```
-num of repos 57
-repos from results 3
-found  13
-/msrdemo# cat contactemails.csv 
-```
-
-You need to [create your own token](https://docs.github.com/en/github/authenticating-to-github/keeping-your-account-and-data-secure/creating-a-personal-access-token) and save it in a token file that you pass to the script. 
-
-Another example is looking at the average release times of various GitHub repos, as shown in [https://github.com/ualberta-smr/LibraryMetricScripts/blob/master/scripts/ReleaseFrequency/releasefrequency.py](https://github.com/ualberta-smr/LibraryMetricScripts/blob/master/scripts/ReleaseFrequency/releasefrequency.py).
-
-## Using GHTorrent
-
-* The website provides all the details on how to download a data dump to use [http://ghtorrent.org/downloads.html](http://ghtorrent.org/downloads.html)
-* Alternatively, they now also offer a VM through vagrant that removes the burden of doing a lot of the setup needed
-* You can follow the instructions [here](https://github.com/ghtorrent/ghtorrent-vagrant) to use this
+Using the github APIs also allows you to access other data like releases and, for example, calculate average release time of a project.
 
 # Mining Stack Overflow Data
 
