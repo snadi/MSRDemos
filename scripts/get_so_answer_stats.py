@@ -2,10 +2,15 @@
 
 from stackapi import StackAPI
 from statistics import median
+import os
 
 def read_question_ids():
     question_ids = list()
-    with open("../resources/question_ids.txt", "r") as file: 
+    
+    script_dir = os.path.dirname(__file__)
+    question_ids_file = os.path.join(script_dir, "../resources/question_ids.txt")
+
+    with open(question_ids_file, "r") as file: 
         for line in file.readlines():
             items = line.split(",")
             question_ids.extend([item.strip() for item in items])
