@@ -8,7 +8,7 @@ args = parser.parse_args()
 
 modified_functions = {}
 
-commits = Repository(args.path, only_in_branch='master',only_modifications_with_file_types=['.py']).traverse_commits()
+commits = Repository(args.path, only_in_branch='main',only_modifications_with_file_types=['.py']).traverse_commits()
 for commit in commits:
     for modified_file in commit.modified_files:
         changed_methods = modified_file.changed_methods
