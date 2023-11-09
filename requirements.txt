@@ -3,3 +3,4 @@ pydriller==2.5.1
 PyGithub==1.59.0
 stackapi==0.1.12
 regex
+python-dateutil
