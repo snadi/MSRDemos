@@ -1,0 +1,32 @@
+name: List top modified functions
+
+on:
+  workflow_dispatch:
+    inputs:
+      topn:
+        description: "The number of top frequently modified functions to return"
+        type: number
+        default: "5"
+      mainbranch:
+        description: "The name of the branch to analyze"
+        type: string
+        default: "main"
+      lastyearonly:
+        description: "Disable if you want to analyze the full history (takes longer)"
+        type: boolean
+        default: true
+  
+jobs:
+  top-modified-fns:
+    runs-on: ubuntu-latest
+    name: A job to list top modified functions
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: get modified functions
+        uses: snadi/TopModifiedFunctions@v1.2
+        with:
+          topn: "${{ github.event.inputs.topn }}"
+          mainbranch: "${{ github.event.inputs.mainbranch }}"
+          lastyearonly: "${{ github.event.inputs.lastyearonly }}"
